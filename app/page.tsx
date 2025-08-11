@@ -21,7 +21,7 @@ export default function HeroAbout() {
             {/* Actions */}
             <div className="mt-6 flex flex-wrap gap-3">
               <a
-                href="nntkim.work@gmail.com"
+                href="mailto:you@example.com"
                 className="inline-flex items-center gap-2 rounded-xl border border-zinc-200 px-3 py-2 text-sm shadow-sm transition hover:bg-zinc-50"
               >
                 <Mail className="h-4 w-4" /> Email

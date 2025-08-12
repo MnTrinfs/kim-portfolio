@@ -6,6 +6,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/footer'
 import Experience from './components/Experience'
+import Skills from './components/Skills'
 import { baseUrl } from './sitemap'
 
 export const metadata: Metadata = {
@@ -56,6 +57,7 @@ export default function RootLayout({
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
           {children}
           <Experience />
+          <Skills />
           <Footer />
           <Analytics />
           <SpeedInsights />

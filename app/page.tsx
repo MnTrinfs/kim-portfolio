@@ -3,7 +3,7 @@ import { Mail, Phone, Github, Linkedin, Globe } from "lucide-react";
 
 export default function HeroAbout() {
   return (
-    <main className="min-h-screen bg-white text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100 text-lg">
+    <main className="bg-white text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100 text-lg">
       {/* soft background accents */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full blur-3xl bg-amber-300/30 dark:bg-amber-500/15" />

@@ -4,11 +4,18 @@ import { Mail, Phone, Github, Linkedin, Globe } from "lucide-react";
 export default function HeroAbout() {
   return (
     <main className="min-h-screen bg-white text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100 text-lg">
+      {/* soft background accents */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full blur-3xl bg-amber-300/30 dark:bg-amber-500/15" />
+        <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full blur-3xl bg-rose-300/30 dark:bg-rose-600/15" />
+      </div>
+      
       <section className="mx-auto max-w-5xl px-6 py-14 -ml-6 xl:-ml-16">
         <div className="grid gap-10 md:grid-cols-[1fr_auto] md:items-start">
           {/* Left: Text */}
           <div>
-            <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Nguyen Ngoc Thien Kim</h1>
+            <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl 
+            text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-rose-600">Nguyen Ngoc Thien Kim</h1>
             <p className="mt-3 text-zinc-700 dark:text-zinc-300">
               Electronics and Telecommunications student focused on <span className="font-medium">Robotics</span>, <span className="font-medium">Embedded Systems</span> and <span className="font-medium">Circuit Design</span>
             </p>
@@ -57,7 +64,7 @@ export default function HeroAbout() {
             <Image
               src="/img/portrait.jpg"
               alt="Profile photo"
-              className="rounded-full bg-gray-100 block lg:mt-5 mt-0 lg:mb-5 mb-10 mx-auto sm:float-right sm:ml-5 sm:mb-5 grayscale hover:grayscale-0"
+              className="rounded-full bg-gray-100 block lg:mt-5 mt-0 lg:mb-5 mb-10 mx-auto sm:ml-5 sm:mb-5"
               unoptimized
               width={160}
               height={160}

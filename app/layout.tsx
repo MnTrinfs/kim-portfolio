@@ -5,6 +5,7 @@ import { GeistMono } from 'geist/font/mono'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/footer'
+import Experience from './components/Experience'
 import { baseUrl } from './sitemap'
 
 export const metadata: Metadata = {
@@ -54,6 +55,7 @@ export default function RootLayout({
       <body className="bg-white text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100 antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
           {children}
+          <Experience />
           <Footer />
           <Analytics />
           <SpeedInsights />

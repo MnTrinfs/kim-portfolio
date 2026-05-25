@@ -1,11 +1,32 @@
 @import 'tailwindcss';
 
+@theme {
+  --font-serif: var(--font-lora), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Roboto Mono, Menlo, Monaco, Consolas, monospace;
+}
+
 ::selection {
-  background-color: #47a3f3;
+  background-color: #1f4b99;
   color: #fefefe;
 }
 
+@media (prefers-color-scheme: dark) {
+  ::selection {
+    background-color: #3b82f6;
+    color: #000;
+  }
+}
+
 :root {
+  --text: #222222;
+  --muted: #666666;
+  --border: #dddddd;
+  --bg: #fcfcfc;
+  --link: #1f4b99;
+  --accent: #111111;
+  --card: #ffffff;
+  
   --sh-class: #2d5e9d;
   --sh-identifier: #354150;
   --sh-sign: #8996a3;
@@ -19,6 +40,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --text: #e4e4e7; /* zinc-200 */
+    --muted: #a1a1aa; /* zinc-400 */
+    --border: #27272a; /* zinc-800 */
+    --bg: #09090b; /* zinc-950 */
+    --link: #60a5fa; /* blue-400 */
+    --accent: #fafafa; /* zinc-50 */
+    --card: #18181b; /* zinc-900 */
+    
     --sh-class: #4c97f8;
     --sh-identifier: white;
     --sh-keyword: #f47067;
@@ -31,12 +60,38 @@
 
 html {
   min-width: 360px;
-  font-size: 18px;
+  font-size: 17px;
+  background-color: var(--bg);
+  color: var(--text);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Typography styles for MDX / Blog Posts */
+.prose {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--text);
+  line-height: 1.75;
 }
 
 .prose .anchor {
   @apply absolute invisible no-underline;
-
   margin-left: -1em;
   padding-right: 0.5em;
   width: 80%;
@@ -44,17 +99,25 @@ html {
   cursor: pointer;
 }
 
-.anchor:hover {
+.prose .anchor:hover {
   @apply visible;
 }
 
 .prose a {
-  @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.prose a:hover {
+  text-decoration-thickness: 2px;
 }
 
 .prose .anchor:after {
-  @apply text-neutral-300 dark:text-neutral-700;
   content: '#';
+  color: var(--muted);
+  opacity: 0.5;
 }
 
 .prose *:hover > .anchor {
@@ -62,15 +125,17 @@ html {
 }
 
 .prose pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
+  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-800 py-3 px-4 text-sm my-6;
+  font-family: var(--font-mono);
 }
 
 .prose code {
-  @apply px-1 py-0.5 rounded-lg;
+  @apply px-1 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-sm;
+  font-family: var(--font-mono);
 }
 
 .prose pre code {
-  @apply p-0;
+  @apply p-0 bg-transparent dark:bg-transparent rounded-none;
   border: initial;
   line-height: 1.5;
 }
@@ -80,44 +145,55 @@ html {
 }
 
 .prose img {
-  /* Don't apply styles to next/image */
-  @apply m-0;
+  @apply m-0 rounded-lg border border-neutral-200 dark:border-neutral-800;
 }
 
 .prose p {
-  @apply my-4 text-neutral-800 dark:text-neutral-200;
+  @apply my-5;
+  text-align: justify;
 }
 
 .prose h1 {
-  @apply text-4xl font-medium tracking-tight mt-6 mb-2;
+  font-family: Georgia, "Times New Roman", serif;
+  @apply text-3xl font-bold tracking-tight mt-8 mb-4 text-neutral-900 dark:text-neutral-50;
 }
 
 .prose h2 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  font-family: Georgia, "Times New Roman", serif;
+  @apply text-2xl font-bold tracking-tight mt-8 mb-3 text-neutral-900 dark:text-neutral-50 pb-1 border-b border-neutral-200 dark:border-neutral-800;
 }
 
 .prose h3 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  font-family: Georgia, "Times New Roman", serif;
+  @apply text-xl font-bold tracking-tight mt-6 mb-2 text-neutral-900 dark:text-neutral-50;
 }
 
 .prose h4 {
-  @apply text-lg font-medium tracking-tight mt-6 mb-2;
+  font-family: Georgia, "Times New Roman", serif;
+  @apply text-lg font-bold tracking-tight mt-6 mb-2 text-neutral-900 dark:text-neutral-50;
 }
 
 .prose strong {
-  @apply font-medium;
+  @apply font-bold text-neutral-900 dark:text-neutral-50;
 }
 
 .prose ul {
-  @apply list-disc pl-6;
+  @apply list-disc pl-6 my-4;
 }
 
 .prose ol {
-  @apply list-decimal pl-6;
+  @apply list-decimal pl-6 my-4;
+}
+
+.prose li {
+  @apply my-2;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-neutral-300 dark:border-neutral-700 pl-4 italic my-6 text-neutral-600 dark:text-neutral-400;
 }
 
 .prose > :first-child {
-  /* Override removing top margin, causing layout shift */
   margin-top: 1.25em !important;
   margin-bottom: 1.25em !important;
 }
@@ -127,11 +203,10 @@ pre::-webkit-scrollbar {
 }
 
 pre {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* Remove Safari input shadow on mobile */
 input[type='text'],
 input[type='email'] {
   -webkit-appearance: none;
@@ -144,6 +219,15 @@ table {
   max-width: fit-content;
   overflow-x: auto;
   white-space: nowrap;
+  @apply my-6 border-collapse;
+}
+
+th, td {
+  @apply px-4 py-2 border border-neutral-200 dark:border-neutral-800 text-left;
+}
+
+th {
+  @apply bg-neutral-50 dark:bg-neutral-900 font-bold;
 }
 
 .title {

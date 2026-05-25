@@ -1,6 +1,5 @@
 export default function Experience() {
   const items = [
-    { range: "2018–2021", title: "Ernst Thalmann High School, HCM City", subtitle: "" },
     {
       range: "October 2021 – October 2026",
       title: "Ho Chi Minh City University of Science (VNU-HCMUS)",
@@ -15,49 +14,43 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className="mx-auto max-w-5xl px-6 py-16">
+    <section id="experience" className="flex flex-col gap-6">
       {/* Heading */}
-      <div className="text-center">
-        <h2 className="text-4xl font-extrabold tracking-tight">
-          My{" "}
-          <span className="bg-gradient-to-r from-amber-500 to-rose-600 bg-clip-text text-transparent">
-            Experience
-          </span>
-        </h2>
-        <span className="mx-auto mt-3 block h-1 w-28 rounded-full bg-gradient-to-r from-amber-500 to-rose-600" />
-      </div>
+      <h2 className="font-serif text-2xl font-bold text-zinc-900 dark:text-zinc-50 border-b border-zinc-200 dark:border-zinc-800 pb-2">
+        Education & Experience
+      </h2>
 
       {/* Timeline */}
       <ol
         role="list"
         className="
-          relative mt-12 pl-10
-          [--tl:theme(spacing.6)] sm:[--tl:theme(spacing.7)]
-          before:absolute before:left-[var(--tl)] before:top-0 before:h-full before:w-px
-          before:bg-zinc-200 dark:before:bg-zinc-700
+          relative pl-6 sm:pl-8 mt-2
+          before:absolute before:left-0 before:top-2 before:h-[95%] before:w-px
+          before:bg-zinc-200 dark:before:bg-zinc-800
         "
       >
         {items.map((it, i) => (
-          <li key={i} className="relative mb-10">
+          <li key={i} className="relative mb-8 last:mb-2 pl-6">
             {/* dot centered on the line */}
             <span
               aria-hidden
               className="
-                absolute left-[var(--tl)] top-2 h-3 w-3 -translate-x-1/2 rounded-full
-                bg-gradient-to-r from-amber-500 to-rose-600
-                ring-2 ring-white dark:ring-zinc-900 shadow
+                absolute left-0 top-1.5 h-2 w-2 -translate-x-1/2 rounded-full
+                bg-zinc-900 dark:bg-zinc-50 ring-4 ring-white dark:ring-zinc-950
               "
             />
             {/* content */}
-            <div className="pl-8">
-              <p className="text-sm uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+            <div className="flex flex-col">
+              <span className="font-sans text-[11px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
                 {it.range}
-              </p>
-              <h3 className="mt-1 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+              </span>
+              <h3 className="font-serif text-lg font-bold text-zinc-900 dark:text-zinc-50 mt-1">
                 {it.title}
               </h3>
               {it.subtitle && (
-                <p className="mt-1 text-zinc-600 dark:text-zinc-300">{it.subtitle}</p>
+                <p className="font-sans text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+                  {it.subtitle}
+                </p>
               )}
             </div>
           </li>

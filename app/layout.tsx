@@ -2,25 +2,31 @@ import './global.css'
 import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
+import { Lora } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Navbar } from './components/nav'
 import Footer from './components/footer'
-import Experience from './components/Experience'
-import Skills from './components/Skills'
 import { baseUrl } from './sitemap'
+
+const lora = Lora({
+  subsets: ['vietnamese', 'latin'],
+  display: 'swap',
+  variable: '--font-lora',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Portfolio',
-    template: '%s | Portfolio',
+    default: 'Nguyen Ngoc Thien Kim | Portfolio',
+    template: '%s | Nguyen Ngoc Thien Kim',
   },
-  description: 'This is my portfolio.',
+  description: 'Nguyen Ngoc Thien Kim - Electronics and Telecommunications Student focused on Robotics, Embedded Systems and Circuit Design.',
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
+    title: 'Nguyen Ngoc Thien Kim | Portfolio',
+    description: 'Nguyen Ngoc Thien Kim - Electronics and Telecommunications Student focused on Robotics, Embedded Systems and Circuit Design.',
     url: baseUrl,
-    siteName: 'My Portfolio',
+    siteName: 'Nguyen Ngoc Thien Kim Portfolio',
     locale: 'en_US',
     type: 'website',
   },
@@ -49,19 +55,19 @@ export default function RootLayout({
       lang="en"
       className={cx(
         'text-black bg-white dark:text-white dark:bg-black',
+        lora.variable,
         GeistSans.variable,
         GeistMono.variable
       )}
     >
-      <body className="bg-white text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100 antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
-        <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
+      <body className="bg-white text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100 antialiased max-w-[980px] mx-auto px-4 sm:px-6 md:px-8 flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-auto min-w-0 mt-8 flex flex-col">
           {children}
-          <Experience />
-          <Skills />
-          <Footer />
-          <Analytics />
-          <SpeedInsights />
         </main>
+        <Footer />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

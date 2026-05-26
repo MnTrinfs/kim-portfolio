@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-serif: var(--font-lora), Georgia, "Times New Roman", serif;
+  --font-serif: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Roboto Mono, Menlo, Monaco, Consolas, monospace;
 }
@@ -64,13 +64,31 @@ html {
   background-color: var(--bg);
   color: var(--text);
   scroll-behavior: smooth;
+  /* Dotted grid background */
+  background-image: radial-gradient(circle, var(--border) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
 }
 
 body {
-  font-family: Georgia, "Times New Roman", serif;
-  background-color: var(--bg);
+  font-family: var(--font-sans);
+  background-color: transparent; /* allow html background dotted pattern to show through */
   color: var(--text);
   line-height: 1.7;
+}
+
+@keyframes pulse-green {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+.animate-pulse-green {
+  animation: pulse-green 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 a {
@@ -85,7 +103,7 @@ a:hover {
 
 /* Typography styles for MDX / Blog Posts */
 .prose {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-sans);
   color: var(--text);
   line-height: 1.75;
 }

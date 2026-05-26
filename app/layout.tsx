@@ -60,9 +60,9 @@ export default function RootLayout({
         GeistMono.variable
       )}
     >
-      <body className="bg-white text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100 antialiased max-w-[980px] mx-auto px-4 sm:px-6 md:px-8 flex flex-col min-h-screen">
+      <body className="text-zinc-900 dark:text-zinc-100 antialiased flex flex-col min-h-screen">
         <Navbar />
-        <main className="flex-auto min-w-0 mt-8 flex flex-col">
+        <main className="flex-auto min-w-0 max-w-[980px] w-full mx-auto px-4 sm:px-6 md:px-8 mt-8 flex flex-col">
           {children}
         </main>
         <Footer />

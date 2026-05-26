@@ -1,2 +1,2 @@
 # kim-portfolio
-My friend's portfolio website - using Flowbite (TailwindCSS), Next.JS. Deploy on Vercel
+My friend's portfolio website - using Next.js, Flowbite (TailwindCSS). Deploy on Vercel
